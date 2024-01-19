@@ -1,12 +1,17 @@
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import Link from 'next/link'
-import React from 'react'
-import Image from "next/image";
-import GooogleIcon from "../../../public/google.svg"
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import Link from 'next/link';
+import React from 'react';
+import GoogleSignInButton from '@/app/components/GoogleSignInButton';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/utils/auth';
+import { redirect } from 'next/navigation';
 
-
-export default function Login() {
+export default async function Login() {
+  const session = await getServerSession(authOptions);
+  if (session) {
+    return redirect('/home');
+  }
   return (
     <div className="rounded-2xl bg-black/80 py-10 px-6">
       <form method="post" action="/api/auth/signin">
@@ -29,17 +34,14 @@ export default function Login() {
       </form>
 
       <div className="text-gray-500 text-sm mt-2">
-        New to Neflix?{" "}
+        New to Neflix?{' '}
         <Link className="text-white hover:underline" href="/sign-up">
           Sign up now!
         </Link>
       </div>
       <div className="flex w-full justify-center items-center gap-x-3 mt-6">
-      <Button variant="outline">
-      <Image src={GooogleIcon} alt="Google icon" className="w-6 h-6 mr-2" />
-      Sign in with Google
-      </Button>
+        <GoogleSignInButton />
       </div>
-      </div>
-  )
+    </div>
+  );
 }

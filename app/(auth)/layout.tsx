@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react'
-import Image from "next/image";
-import BackgroundImage from "../../public/login_background.jpg";
-import Logo from "../../public/netflicks_logo.png"
+import React, { ReactNode } from 'react';
+import Image from 'next/image';
+import BackgroundImage from '../../public/login_background.jpg';
+import Logo from '../../public/netflicks_logo.png';
 
-export default function AuthLayout({children}: {children: ReactNode}) {
+export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex h-screen w-screen flex-col bg-black items-center justify-center md:bg-transparent">
       <Image
@@ -24,5 +24,5 @@ export default function AuthLayout({children}: {children: ReactNode}) {
       />
       {children}
     </div>
-  )
+  );
 }
