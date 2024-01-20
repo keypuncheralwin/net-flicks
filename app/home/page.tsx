@@ -10,9 +10,5 @@ export default async function HomePage() {
   if (!session) {
     return redirect('/login');
   }
-  return (
-    <div>
-      <Navbar />
-    </div>
-  );
+  return <div>OK</div>;
 }
