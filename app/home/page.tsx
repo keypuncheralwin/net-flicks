@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import React from 'react';
 import { authOptions } from '../utils/auth';
 import Navbar from '../components/Navbar';
+import MovieVideo from '../components/MovieVideo';
 
 export default async function HomePage() {
   const session = await getServerSession(authOptions);
@@ -10,5 +11,9 @@ export default async function HomePage() {
   if (!session) {
     return redirect('/login');
   }
-  return <div>OK</div>;
+  return (
+    <div className="p-5 lg:p-0">
+      <MovieVideo />
+    </div>
+  );
 }
