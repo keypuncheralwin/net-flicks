@@ -2,6 +2,7 @@ import Image from "next/image";
 import prisma from "../utils/db";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../utils/auth";
+import { MovieCard } from "./MovieCard";
 
 async function getData(userId: string) {
   const data = await prisma.movie.findMany({
@@ -53,6 +54,18 @@ export default async function RecentlyAdded() {
                 width={800}
                 height={800}
                 className="absolute w-full h-full -z-10 rounded-lg object-cover"
+              />
+              <MovieCard
+                movieId={movie.id}
+                overview={movie.overview}
+                title={movie.title}
+                wachtListId={movie.WatchLists[0]?.id}
+                youtubeUrl={movie.youtubeString}
+                watchList={movie.WatchLists.length > 0 ? true : false}
+                key={movie.id}
+                age={movie.age}
+                time={movie.duration}
+                year={movie.release}
               />
             </div>
           </div>
