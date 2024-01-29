@@ -5,9 +5,12 @@ import { authOptions } from '../utils/auth';
 import Navbar from '../components/Navbar';
 import MovieVideo from '../components/MovieVideo';
 import RecentlyAdded from '../components/RecentlyAdded';
+import HomeCarousel from '../components/HomeCarousel';
+import { getMedia } from '../utils/action';
 
 export default async function HomePage() {
   const session = await getServerSession(authOptions);
+  const data = await getMedia('tv', session?.user?.email as string);
 
   if (!session) {
     return redirect('/login');
@@ -15,8 +18,7 @@ export default async function HomePage() {
   return (
     <div className="p-5 lg:p-0">
       <MovieVideo />
-      <h1 className="text-3xl font-bold ">Recently Added</h1>
-      <RecentlyAdded />
+      <HomeCarousel data={data} title={'TV'} />
     </div>
   );
 }

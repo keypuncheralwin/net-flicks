@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { Button, buttonVariants } from "@/components/ui/button";
-import { Heart, PlayCircle } from "lucide-react";
-import PlayVideoModal from "./PlayVideoModal"
-import { useState } from "react";
-import { addTowatchlist, deleteFromWatchlist } from "../utils/action"
-import { usePathname } from "next/navigation";
+import { Button, buttonVariants } from '@/components/ui/button';
+import { Heart, PlayCircle } from 'lucide-react';
+import PlayVideoModal from './PlayVideoModal';
+import { useState } from 'react';
+import { addTowatchlist, deleteFromWatchlist } from '../utils/action';
+import { usePathname } from 'next/navigation';
 
 interface iAppProps {
   title: string;
@@ -32,10 +32,15 @@ export function MovieCard({
 }: iAppProps) {
   const [open, setOpen] = useState(false);
   const pathName = usePathname();
+
+  const handleClick = () => {
+    console.log('ok');
+    setOpen(true);
+  };
   return (
     <>
-      <button onClick={() => setOpen(true)} className="-mt-14">
-        <PlayCircle className="h-20 w-20" />
+      <button onClick={() => handleClick()} className="z-10">
+        <PlayCircle className="h-12 w-12 opacity-80" />
       </button>
 
       <div className="right-5 top-5 absolute z-10">
@@ -58,7 +63,7 @@ export function MovieCard({
         )}
       </div>
 
-      <div className="p-5 absolute bottom-0 left-0">
+      <div className="p-3 absolute bottom-0 left-0">
         <h1 className="font-bold text-lg line-clamp-1">{title}</h1>
         <div className="flex gap-x-2 items-center">
           <p className="font-normal text-sm">{year}</p>
@@ -67,9 +72,6 @@ export function MovieCard({
           </p>
           <p className="font-normal text-sm">{time}h</p>
         </div>
-        <p className="line-clamp-1 text-sm text-gray-200 font-light">
-          {overview}
-        </p>
       </div>
 
       <PlayVideoModal

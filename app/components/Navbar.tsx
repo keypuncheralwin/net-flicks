@@ -6,6 +6,7 @@ import Logo from '../../public/netflicks_logo.png';
 import { Bell, Search } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import UserNav from './UserNav';
+import { useEffect, useState } from 'react';
 
 interface linkProps {
   name: string;
@@ -14,16 +15,39 @@ interface linkProps {
 
 const links: linkProps[] = [
   { name: 'Home', href: '/home' },
-  { name: 'TV', href: '/home/shows' },
+  { name: 'TV', href: '/home/tv' },
   { name: 'Movies', href: '/home/movies' },
-  { name: 'Recently Added', href: '/home/recently' },
+  { name: 'Recently Added', href: '/home/recent' },
   { name: 'My List', href: '/home/user/list' },
 ];
 
 export default function Navbar() {
   const pathName = usePathname();
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 10) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
+    };
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="w-full max-w-8xl mx-auto items-center justify-between px-5 sm:px-6 py-5 lg:px-8 xl:max-w-[80%] flex">
+    <div
+      className={`sticky top-0 z-50 w-full mx-auto items-center justify-between px-5 sm:px-6 py-5 lg:px-8 flex transition duration-300 ease-in-out ${hasScrolled ? 'bg-black bg-opacity-90' : 'bg-transparent'}`}
+    >
       <div className="flex items-center">
         <Link href="/home" className="w-32">
           <Image src={Logo} alt="Netflix logo" priority />
