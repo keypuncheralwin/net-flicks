@@ -6,7 +6,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 
 type HomeCarouselProps = {
   data: any;
-  title: string
+  title: string;
 };
 
 export default function HomeCarousel({ data, title }: HomeCarouselProps) {
@@ -18,10 +18,11 @@ export default function HomeCarousel({ data, title }: HomeCarouselProps) {
     setIsMoved(true);
     if (rowRef.current) {
       const { scrollLeft, clientWidth } = rowRef.current;
+
       const scrollTo =
         direction === 'left'
-          ? scrollLeft - clientWidth
-          : scrollLeft + clientWidth;
+          ? scrollLeft - clientWidth / 1.5
+          : scrollLeft + clientWidth / 1.5;
       rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
     }
   };
@@ -41,7 +42,7 @@ export default function HomeCarousel({ data, title }: HomeCarouselProps) {
 
         <div
           ref={rowRef}
-          className="flex items-center space-x-0.5 overflow-hidden scrollbar-hide md:space-x-2.5 md:p-2"
+          className="flex items-center space-x-3.5 overflow-hidden scrollbar-hide py-2 md:space-x-4"
         >
           {datas.map((movie, index) => (
             <div

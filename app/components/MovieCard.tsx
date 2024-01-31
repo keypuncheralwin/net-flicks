@@ -33,37 +33,41 @@ export function MovieCard({
   const [open, setOpen] = useState(false);
   const pathName = usePathname();
 
-  const handleClick = () => {
-    console.log('ok');
-    setOpen(true);
-  };
   return (
     <>
-      <button onClick={() => handleClick()} className="z-10">
+      <button onClick={() => setOpen(true)} className="z-10">
         <PlayCircle className="h-12 w-12 opacity-80" />
       </button>
 
-      <div className="right-5 top-5 absolute z-10">
+      <div className="right-1 top-1 md:right-2 md:top-2 absolute z-10">
         {watchList ? (
           <form action={deleteFromWatchlist}>
             <input type="hidden" name="watchlistId" value={wachtListId} />
             <input type="hidden" name="pathname" value={pathName} />
-            <Button variant="outline" size="icon">
-              <Heart className="w-4 h-4 text-red-500" />
+            <Button
+              variant="outline"
+              className="p-0 m-0 rounded-full"
+              size="icon"
+            >
+              <Heart className="w-4 h-4 text-red-500 fill-red-500" />
             </Button>
           </form>
         ) : (
           <form action={addTowatchlist}>
             <input type="hidden" name="movieId" value={movieId} />
             <input type="hidden" name="pathname" value={pathName} />
-            <Button variant="outline" size="icon">
-              <Heart className="w-4 h-4" />
+            <Button
+              variant="outline"
+              className="p-0 m-0 rounded-full"
+              size="icon"
+            >
+              <Heart className="w-4 h-4 text-red-500" />
             </Button>
           </form>
         )}
       </div>
 
-      <div className="p-3 absolute bottom-0 left-0">
+      <div className="p-3 absolute bottom-0 left-0 opacity-0 md:opacity-100">
         <h1 className="font-bold text-lg line-clamp-1">{title}</h1>
         <div className="flex gap-x-2 items-center">
           <p className="font-normal text-sm">{year}</p>

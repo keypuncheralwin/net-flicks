@@ -7,6 +7,7 @@ import GooogleIcon from '../../../public/google.svg';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/utils/auth';
 import { redirect } from 'next/navigation';
+import AuthForm from '@/app/components/AuthForm';
 
 export default async function SignUp() {
   const session = await getServerSession(authOptions);
@@ -14,25 +15,8 @@ export default async function SignUp() {
     return redirect('/home');
   }
   return (
-    <div className="rounded-2xl bg-black/80 py-10 px-6">
-      <form method="post" action="/api/auth/signin">
-        <h1 className="text-3xl font-semibold text-white">Sign Up</h1>
-        <div className="space-y-4 mt-5">
-          <Input
-            type="email"
-            name="email"
-            placeholder="Email"
-            className="bg-[#333] placeholder:text-xs placeholder:text-gray-400 w-full inline-block"
-          />
-          <Button
-            type="submit"
-            variant="destructive"
-            className="w-full bg-[#e50914]"
-          >
-            Sign Up
-          </Button>
-        </div>
-      </form>
+    <div className="rounded-2xl bg-black/80 py-10 px-6 w-96 h-96">
+      <AuthForm authType="sign-up" />
 
       <div className="text-gray-500 text-sm mt-2">
         Already Have a account?{'  '}

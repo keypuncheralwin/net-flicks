@@ -29,10 +29,7 @@ export default function PlayVideoModal({
   release,
 }: iAppProps) {
   return (
-    <Dialog
-      open={state}
-      onOpenChange={() => changeState(!state)}
-    >
+    <Dialog open={state} onOpenChange={() => changeState(!state)}>
       <DialogContent className="p-0 w-full max-w-4xl h-auto overflow-hidden rounded-lg bg-black">
         {/* Video player */}
         <div className="relative" style={{ paddingTop: '60%' }}>
@@ -55,7 +52,7 @@ export default function PlayVideoModal({
           />
         </div>
         <div className="p-4 z-20 bg-opacity-80">
-        <strong className="text-lg">{title}</strong>
+          <strong className="text-lg">{title}</strong>
           <div className="flex items-center text-white mb-4 pt-2">
             <span className="text-sm pr-2">{release}</span>
             <span className="text-sm border py-0.5 px-1 border-gray-200 rounded">

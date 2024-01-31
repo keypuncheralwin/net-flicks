@@ -2,9 +2,7 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import React from 'react';
 import { authOptions } from '../utils/auth';
-import Navbar from '../components/Navbar';
 import MovieVideo from '../components/MovieVideo';
-import RecentlyAdded from '../components/RecentlyAdded';
 import HomeCarousel from '../components/HomeCarousel';
 import { getMedia } from '../utils/action';
 
