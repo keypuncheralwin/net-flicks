@@ -8,6 +8,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/utils/auth';
 import { redirect } from 'next/navigation';
 import AuthForm from '@/app/components/AuthForm';
+import GoogleSignInButton from '@/app/components/GoogleSignInButton';
 
 export default async function SignUp() {
   const session = await getServerSession(authOptions);
@@ -25,10 +26,7 @@ export default async function SignUp() {
         </Link>
       </div>
       <div className="flex w-full justify-center items-center gap-x-3 mt-6">
-        <Button variant="outline">
-          <Image src={GooogleIcon} alt="Google icon" className="w-6 h-6 mr-2" />
-          Sign in with Google
-        </Button>
+        <GoogleSignInButton />
       </div>
     </div>
   );

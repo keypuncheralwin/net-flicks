@@ -24,13 +24,11 @@ export async function addNewUser(name: string, email: string) {
         data: {
           name: name,
           email: email,
-          // Add other fields as required
         },
       });
       return { success: true, message: 'Successfully added name and email' };
     }
   } catch (error) {
-    // Handle any other errors
     return { success: false, message: 'An error occurred: ' + error.message };
   }
 }
@@ -163,4 +161,29 @@ export async function getMedia(category: string, userId: string) {
       throw new Error();
     }
   }
+}
+
+export async function getWatchlist(userId: string) {
+  const data = await prisma.watchList.findMany({
+    where: {
+      userId: userId,
+    },
+    select: {
+      Movie: {
+        select: {
+          title: true,
+          age: true,
+          duration: true,
+          imageString: true,
+          overview: true,
+          release: true,
+          id: true,
+          WatchLists: true,
+          youtubeString: true,
+        },
+      },
+    },
+  });
+
+  return data;
 }

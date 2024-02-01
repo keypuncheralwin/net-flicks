@@ -70,7 +70,7 @@ export default function AuthForm({ authType }: AuthFormProps) {
   } catch (error) {
     showToast('Error', 'An unexpected error occurred');
   } finally {
-    setIsLoading(false); // Stop processing regardless of outcome
+    setIsLoading(false);
   }
   };
 
