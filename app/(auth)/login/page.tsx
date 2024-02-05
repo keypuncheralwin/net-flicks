@@ -15,8 +15,8 @@ export default async function Login() {
   }
   return (
     <div className="rounded-2xl bg-black/80 py-10 px-6 w-96 h-96">
-      <div className='p-2'>
-      <AuthForm authType="login" />
+      <div className="p-2">
+        <AuthForm authType="login" />
       </div>
       <div className="text-gray-500 text-sm mt-2 p-2">
         New to Neflix?{' '}

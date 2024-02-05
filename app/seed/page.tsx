@@ -1,9 +1,10 @@
+'use client';
 import { Button } from '@/components/ui/button';
 import prisma from '../utils/db';
+import requests from '../utils/apiCalls';
 
 export default function SeedDatabase() {
   async function postData() {
-    'use server';
     await prisma.movie.createMany({
       data: [
         {
@@ -166,11 +167,23 @@ export default function SeedDatabase() {
     });
   }
 
+  const handleClick = () => {
+    console.log('Here');
+    fetch(requests.netflixOriginals)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data); // This will log the retrieved data to the console
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error); // This will log any errors that occur during the fetch operation
+      });
+  };
+
   return (
     <div className="m-5">
-      <form action={postData}>
-        <Button type="submit">Submit</Button>
-      </form>
+      <Button onClick={handleClick} type="submit">
+        Submit
+      </Button>
     </div>
   );
 }

@@ -3,14 +3,14 @@ import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import { MovieCard } from './MovieCard';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import { Movie } from '../utils/types';
 
 type HomeCarouselProps = {
-  data: any;
+  data: Movie[];
   title: string;
 };
 
 export default function HomeCarousel({ data, title }: HomeCarouselProps) {
-  const datas = [...data, ...data, ...data]; // Duplicated the array 3 times
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
 
@@ -28,8 +28,8 @@ export default function HomeCarousel({ data, title }: HomeCarouselProps) {
   };
 
   return (
-    <div className="h-40 space-y-0.5 md:space-y-2">
-      <h2 className="w-56 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
+    <div className="h-40 space-y-0.5 md:space-y-0.5">
+      <h2 className="cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl p-0">
         {title}
       </h2>
       <div className="relative md:-ml-2">
@@ -42,15 +42,17 @@ export default function HomeCarousel({ data, title }: HomeCarouselProps) {
 
         <div
           ref={rowRef}
-          className="flex items-center space-x-3.5 overflow-hidden scrollbar-hide py-2 md:space-x-4"
+          className="flex h-60 items-center space-x-3.5 overflow-hidden scrollbar-hide py-2 md:space-x-4"
         >
-          {datas.map((movie, index) => (
+          {data.map((movie, index) => (
             <div
               key={movie.id}
               className="relative h-28 min-w-[180px] cursor-pointer transition duration-200 ease-out md:h-36 md:min-w-[260px] hover:scale-110 hover:z-10"
             >
               <Image
-                src={movie.imageString}
+                src={`https://image.tmdb.org/t/p/w500${
+                  movie.backdrop_path || movie.poster_path
+                }`}
                 alt="Movie"
                 className="rounded-sm object-cover md:rounded"
                 layout="fill"
@@ -60,13 +62,13 @@ export default function HomeCarousel({ data, title }: HomeCarouselProps) {
                 <MovieCard
                   movieId={movie.id}
                   overview={movie.overview}
-                  title={movie.title}
-                  youtubeUrl={movie.youtubeString}
-                  watchList={movie.WatchLists.length > 0}
-                  age={movie.age}
-                  time={movie.duration}
-                  year={movie.release}
-                  wachtListId={movie.WatchLists[0]?.id}
+                  title={movie?.title || movie?.original_name}
+                  year={movie?.release_date || movie.first_air_date}
+                  mediaType={movie.media_type as string}
+                  score={movie.vote_average}
+                  imagePath={`https://image.tmdb.org/t/p/w500${
+                    movie.backdrop_path || movie.poster_path
+                  }`}
                 />
               </div>
             </div>

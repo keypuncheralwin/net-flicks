@@ -20,11 +20,11 @@ async function getData() {
 }
 
 export default async function MovieVideo() {
-  const data = await getData();
+  // const data = await getData();
 
   return (
     <div className="h-[55vh] lg:h-[60vh] w-full flex justify-start items-center">
-      <video
+      {/* <video
         poster={data?.imageString}
         autoPlay
         muted
@@ -50,7 +50,7 @@ export default async function MovieVideo() {
             key={data?.id}
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

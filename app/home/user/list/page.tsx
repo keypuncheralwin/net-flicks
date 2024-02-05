@@ -1,9 +1,9 @@
-import { MovieCard } from "@/app/components/MovieCard";
-import { getWatchlist } from "@/app/utils/action";
-import { authOptions } from "@/app/utils/auth";
-import prisma from "@/app/utils/db";
-import { getServerSession } from "next-auth";
-import Image from "next/image";
+import { MovieCard } from '@/app/components/MovieCard';
+import { getWatchlist } from '@/app/utils/action';
+import { authOptions } from '@/app/utils/auth';
+import prisma from '@/app/utils/db';
+import { getServerSession } from 'next-auth';
+import Image from 'next/image';
 
 export default async function Watchlist() {
   const session = await getServerSession(authOptions);

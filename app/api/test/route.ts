@@ -60,8 +60,8 @@ export async function GET(request: NextRequest) {
     const user = await prisma.user.findUnique({
       where: { email: email },
       include: {
-        accounts: true,  // Include related accounts
-        sessions: true,  // Include related sessions
+        accounts: true, // Include related accounts
+        sessions: true, // Include related sessions
       },
     });
 
@@ -77,7 +77,10 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     return new Response(
-      JSON.stringify({ error: 'Error fetching user data', message: error.message }),
+      JSON.stringify({
+        error: 'Error fetching user data',
+        message: error.message,
+      }),
       {
         status: 500,
         headers: {
