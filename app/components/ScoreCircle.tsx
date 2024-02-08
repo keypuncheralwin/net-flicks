@@ -12,7 +12,7 @@ export default function ScoreCircle(props: ScoreCircleProps) {
     circleColor = 'text-yellow-500'; // Yellow for medium scores
   }
 
-  const size = 34; // SVG dimensions (width/height)
+  const size = 40; // SVG dimensions (width/height)
   const strokeWidth = 4;
   const radius = size / 2 - strokeWidth / 2;
   const circumference = radius * 2 * Math.PI;

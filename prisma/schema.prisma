@@ -66,3 +66,16 @@ model WatchList {
   voteAverage   Float
   youtubeString String
 }
+
+model Featured {
+  id            Int      @id @default(autoincrement())
+  movieId       Int
+  title         String
+  imagePath     String
+  mediaType     String
+  date          String
+  overview      String
+  voteAverage   Float
+  youtubeString String
+  videoSource   String
+}

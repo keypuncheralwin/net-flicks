@@ -44,7 +44,7 @@ export type AddToWatchlistParams = {
   youtubeString: string;
 };
 
-export type watchlistItems =  {
+export type watchlistItems = {
   id: number;
   userId: string;
   movieId: number;
@@ -55,14 +55,31 @@ export type watchlistItems =  {
   overview: string;
   voteAverage: number;
   youtubeString: string;
-}[]
+}[];
+
+export type FeaturedMedia = {
+  id: number;
+  movieId: number;
+  title: string;
+  imagePath: string;
+  mediaType: string;
+  date: string;
+  overview: string;
+  voteAverage: number;
+  youtubeString: string;
+  videoSource: string;
+} | null;
 
 export type GetWatchlistResult = {
   success: boolean;
   message: string;
-  watchlist?:  watchlistItems; 
-}
+  watchlist?: watchlistItems;
+};
 
+export interface YoutubeVideoResult {
+  key: string;
+  type: string;
+}
 export interface Element {
   type:
     | 'Bloopers'

@@ -28,11 +28,11 @@ export default function HomeCarousel({ data, title }: HomeCarouselProps) {
   };
 
   return (
-    <div className="h-40 space-y-0.5 md:space-y-0.5">
-      <h2 className="cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl p-0">
+    <div className=" relative space-y-0.5 md:space-y-0.5 mt-20 -mb-[120px]">
+      <h2 className="absolute top-0 p-1 left-0 cursor-pointer text-2xl font-semibold text-[#e5e5e5] transition duration-200 hover:text-white z-50">
         {title}
       </h2>
-      <div className="relative md:-ml-2">
+      <div className="relative">
         <ChevronLeftIcon
           className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer transition hover:scale-125 ${
             !isMoved && 'hidden'
@@ -42,7 +42,7 @@ export default function HomeCarousel({ data, title }: HomeCarouselProps) {
 
         <div
           ref={rowRef}
-          className="flex h-60 items-center space-x-3.5 overflow-hidden scrollbar-hide py-2 md:space-x-4"
+          className="flex h-60 items-center space-x-3.5 overflow-hidden scrollbar-hide md:space-x-4"
         >
           {data.map((movie, index) => (
             <div

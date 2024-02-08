@@ -57,3 +57,30 @@
     @apply bg-black text-foreground;
   }
 }
+
+/* This will style the scrollbar track */
+::-webkit-scrollbar {
+  width: 12px; /* width of the entire scrollbar */
+}
+
+/* This will style the scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: #e50914; /* Netflix's brand red for the scroll thumb */
+  border-radius: 6px; /* roundness of the scroll thumb */
+}
+
+/* This will style the scrollbar track */
+::-webkit-scrollbar-track {
+  background: #000000; /* Black track */
+}
+
+/* Hover effect for the scrollbar handle */
+::-webkit-scrollbar-thumb:hover {
+  background: #f6121d; /* A lighter red for the thumb on hover */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: #e509146b #000000; /* thumb and track color */
+}

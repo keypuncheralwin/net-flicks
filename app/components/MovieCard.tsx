@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { Element } from '../utils/types';
 import ScoreCircle from './ScoreCircle';
 import { existsInWatchlist } from '../utils/action';
+import { fetchYouTubeTrailerUrl } from '../utils/helpers';
 
 interface iAppProps {
   title: string;
@@ -29,34 +30,20 @@ export function MovieCard({
 }: iAppProps) {
   const [open, setOpen] = useState(false);
   const [videoUrl, setVideoUrl] = useState('');
-  const [watchList, setWatchList] = useState(false)
+  const [watchList, setWatchList] = useState(false);
 
   const handleClick = async () => {
-    const watchList = await existsInWatchlist(movieId)
+    const watchList = await existsInWatchlist(movieId);
     setOpen(true);
-    if(watchList.exists){
-      setVideoUrl(watchList.youtubeString as string)
-      setWatchList(true)
-      return
+    if (watchList.exists) {
+      setVideoUrl(watchList.youtubeString as string);
+      setWatchList(true);
+      return;
     }
-    setWatchList(false)
-    const data = await fetch(
-      `https://api.themoviedb.org/3/${
-        mediaType === 'tv' ? 'tv' : 'movie'
-      }/${movieId}?api_key=${
-        process.env.NEXT_PUBLIC_TMDB_API
-      }&language=en-US&append_to_response=videos`
-    )
-      .then((response) => response.json())
-      .catch((err) => console.log(err.message));
-
-    if (data?.videos) {
-      const index = data.videos.results.findIndex(
-        (element: Element) => element.type === 'Trailer'
-      );
-      setVideoUrl(
-        `https://www.youtube.com/watch?v=${data.videos?.results[index]?.key}`
-      );
+    setWatchList(false);
+    const youtubeUrl = await fetchYouTubeTrailerUrl(movieId, mediaType);
+    if (youtubeUrl) {
+      setVideoUrl(youtubeUrl);
     }
   };
 
