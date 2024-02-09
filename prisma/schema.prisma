@@ -60,7 +60,7 @@ model WatchList {
   movieId       Int
   title         String
   imagePath     String
-  mediaType     String
+  mediaType     String?
   date          String
   overview      String
   voteAverage   Float
@@ -72,7 +72,7 @@ model Featured {
   movieId       Int
   title         String
   imagePath     String
-  mediaType     String
+  mediaType     String?
   date          String
   overview      String
   voteAverage   Float

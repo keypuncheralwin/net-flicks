@@ -10,12 +10,11 @@ import { existsInWatchlist } from '../utils/action';
 
 interface FeaturedSectionProps {
   data: FeaturedMedia | null;
-
 }
 
 export default function FeaturedSection(props: FeaturedSectionProps) {
-  if(!props.data){
-    return null
+  if (!props.data) {
+    return null;
   }
   const {
     imagePath,
@@ -25,8 +24,7 @@ export default function FeaturedSection(props: FeaturedSectionProps) {
     movieId,
     date,
     voteAverage,
-    mediaType
-
+    mediaType,
   } = props.data;
   const [open, setOpen] = useState(false);
   const [watchList, setWatchList] = useState(false);

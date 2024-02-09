@@ -1,10 +1,6 @@
 'use client';
-
-import { Button, buttonVariants } from '@/components/ui/button';
 import PlayVideoModal from './PlayVideoModal';
 import { useState } from 'react';
-import { usePathname } from 'next/navigation';
-import { Element } from '../utils/types';
 import ScoreCircle from './ScoreCircle';
 import { existsInWatchlist } from '../utils/action';
 import { fetchYouTubeTrailerUrl } from '../utils/helpers';
@@ -35,6 +31,7 @@ export function MovieCard({
   const handleClick = async () => {
     const watchList = await existsInWatchlist(movieId);
     setOpen(true);
+    console.log(imagePath);
     if (watchList.exists) {
       setVideoUrl(watchList.youtubeString as string);
       setWatchList(true);

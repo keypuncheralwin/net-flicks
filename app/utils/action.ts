@@ -1,11 +1,11 @@
 'use server';
 
-import { revalidatePath } from 'next/cache';
 import prisma from './db';
 import { getServerSession } from 'next-auth';
 import { authOptions } from './auth';
-import {homePageRequests, tvRequests, movieRequests } from './apiCalls';
-import { AddToWatchlistParams, GetWatchlistResult } from './types';
+import { homePageRequests, tvRequests, movieRequests } from './apiCalls';
+import { AddToWatchlistParams } from './types';
+import { revalidatePath } from 'next/cache';
 
 export async function addNewUser(name: string, email: string) {
   'use server';
@@ -73,6 +73,17 @@ export async function addToWatchlist({
     throw new Error('Authentication required');
   }
 
+  console.log('Adding to watchlist with parameters:', {
+    movieId,
+    title,
+    imagePath,
+    mediaType,
+    date,
+    overview,
+    voteAverage,
+    youtubeString,
+  });
+
   try {
     const newWatchlistEntry = await prisma.watchList.create({
       data: {
@@ -97,7 +108,8 @@ export async function addToWatchlist({
 }
 
 export async function removeFromWatchlist(
-  movieId: number
+  movieId: number,
+  pathName: string
 ): Promise<{ success: boolean; message: string }> {
   'use server';
 
@@ -118,7 +130,9 @@ export async function removeFromWatchlist(
         movieId: movieId,
       },
     });
-
+    if (pathName.includes('list')) {
+      revalidatePath('/home/user/list');
+    }
     if (result.count > 0) {
       // If one or more entries are deleted
       return {
@@ -175,7 +189,7 @@ export async function existsInWatchlist(
   }
 }
 
-export async function getWatchlistItems(): Promise<GetWatchlistResult> {
+export async function getWatchlistItems() {
   'use server';
 
   const session = await getServerSession(authOptions);
@@ -192,6 +206,7 @@ export async function getWatchlistItems(): Promise<GetWatchlistResult> {
         userId: userId,
       },
     });
+    revalidatePath('/home/user/list');
 
     return {
       success: true,
@@ -279,19 +294,14 @@ export const getAllMedia = async () => {
 };
 
 export const getAllTv = async () => {
-  const [
-    trendingTv,
-    topRatedTv,
-    comedyTv,
-    dramaTv,
-    documentaryTv,
-  ] = await Promise.all([
-    fetch(tvRequests.trendingTv).then((res) => res.json()),
-    fetch(tvRequests.topRatedTv).then((res) => res.json()),
-    fetch(tvRequests.comedyTv).then((res) => res.json()),
-    fetch(tvRequests.dramaTv).then((res) => res.json()),
-    fetch(tvRequests.documentaryTv).then((res) => res.json()),
-  ]);
+  const [trendingTv, topRatedTv, comedyTv, dramaTv, documentaryTv] =
+    await Promise.all([
+      fetch(tvRequests.trendingTv).then((res) => res.json()),
+      fetch(tvRequests.topRatedTv).then((res) => res.json()),
+      fetch(tvRequests.comedyTv).then((res) => res.json()),
+      fetch(tvRequests.dramaTv).then((res) => res.json()),
+      fetch(tvRequests.documentaryTv).then((res) => res.json()),
+    ]);
 
   return {
     trendingTv: trendingTv.results,

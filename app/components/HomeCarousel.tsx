@@ -29,7 +29,7 @@ export default function HomeCarousel({ data, title }: HomeCarouselProps) {
 
   return (
     <div className=" relative space-y-0.5 md:space-y-0.5 mt-20 -mb-[120px]">
-      <h2 className="absolute top-0 p-1 left-0 cursor-pointer text-2xl font-semibold text-[#e5e5e5] transition duration-200 hover:text-white z-50">
+      <h2 className="absolute top-0 p-1 left-0 cursor-pointer text-2xl font-semibold text-[#e5e5e5] transition duration-200 hover:text-white z-20">
         {title}
       </h2>
       <div className="relative">

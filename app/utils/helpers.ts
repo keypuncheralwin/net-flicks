@@ -26,7 +26,10 @@ export function isNotEmpty(name: string): boolean {
  * @param {string} mediaType - The type of the media, either 'tv' for TV shows or 'movie' for movies.
  * @returns {Promise<string|null>} A promise that resolves to the YouTube trailer URL if found, or null otherwise.
  */
-export async function fetchYouTubeTrailerUrl(movieId: number, mediaType?: string): Promise<string | null> {
+export async function fetchYouTubeTrailerUrl(
+  movieId: number,
+  mediaType?: string
+): Promise<string | null> {
   const API_KEY = process.env.NEXT_PUBLIC_TMDB_API;
   const BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -37,7 +40,9 @@ export async function fetchYouTubeTrailerUrl(movieId: number, mediaType?: string
       const data = await response.json();
 
       if (data?.videos?.results?.length > 0) {
-        const trailer = data.videos.results.find((video: any) => video.type === 'Trailer');
+        const trailer = data.videos.results.find(
+          (video: any) => video.type === 'Trailer'
+        );
         if (trailer) {
           return `https://www.youtube.com/watch?v=${trailer.key}`;
         }
@@ -63,4 +68,3 @@ export async function fetchYouTubeTrailerUrl(movieId: number, mediaType?: string
     return await fetchTrailerUrl(mediaType);
   }
 }
-

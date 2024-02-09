@@ -37,25 +37,12 @@ export type AddToWatchlistParams = {
   movieId: number;
   title: string;
   imagePath: string;
-  mediaType: string;
+  mediaType: string | null;
   date: string;
   overview: string;
   voteAverage: number;
   youtubeString: string;
 };
-
-export type watchlistItems = {
-  id: number;
-  userId: string;
-  movieId: number;
-  title: string;
-  imagePath: string;
-  mediaType: string;
-  date: string;
-  overview: string;
-  voteAverage: number;
-  youtubeString: string;
-}[];
 
 export type FeaturedMedia = {
   id: number;
@@ -69,12 +56,6 @@ export type FeaturedMedia = {
   youtubeString: string;
   videoSource: string;
 } | null;
-
-export type GetWatchlistResult = {
-  success: boolean;
-  message: string;
-  watchlist?: watchlistItems;
-};
 
 export interface YoutubeVideoResult {
   key: string;
