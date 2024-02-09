@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Logo from '../../public/netflicks_logo.png';
-import { Bell, Search } from 'lucide-react';
+import { Bell, ChevronDown, Search } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import UserNav from './UserNav';
 import { useEffect, useState } from 'react';
@@ -23,6 +23,7 @@ const links: linkProps[] = [
 export default function Navbar() {
   const pathName = usePathname();
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to manage dropdown visibility
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,29 +52,41 @@ export default function Navbar() {
         <Link href="/home" className="w-32">
           <Image src={Logo} alt="Netflix logo" priority />
         </Link>
-        <ul className="lg:flex gap-x-4 ml-14 hidden">
+        <div className="sm:hidden relative">
+          <button
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className=" pl-2 flex text-sm items-center text-gray-300"
+          >
+            Browse <ChevronDown className="w-4 h-4" />
+          </button>
+          {isDropdownOpen && (
+            <ul className="absolute left-0 top-full bg-black w-40 mt-2 rounded-md shadow-lg">
+              {links.map((link, idx) => (
+                <li
+                  key={idx}
+                  className="border-b border-gray-700 last:border-b-0"
+                >
+                  <Link
+                    href={link.href}
+                    className={`block px-4 py-2 text-sm ${pathName === link.href ? 'text-white font-semibold' : 'text-gray-300 font-normal'}`}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <ul className="hidden sm:flex gap-x-4 ml-14">
           {links.map((link, idx) => (
-            <div key={idx}>
-              {pathName === link.href ? (
-                <li>
-                  <Link
-                    href={link.href}
-                    className="text-white font-semibold underline text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ) : (
-                <li>
-                  <Link
-                    className="text-gray-300 font-normal text-sm"
-                    href={link.href}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              )}
-            </div>
+            <li key={idx}>
+              <Link
+                href={link.href}
+                className={`${pathName === link.href ? 'text-white font-semibold underline' : 'text-gray-300 font-normal'} text-sm`}
+              >
+                {link.name}
+              </Link>
+            </li>
           ))}
         </ul>
       </div>

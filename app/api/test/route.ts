@@ -34,7 +34,7 @@ export async function DELETE(request: NextRequest) {
     return new Response('User and all related records deleted successfully', {
       status: 200,
     });
-  } catch (error) {
+  } catch (error: any) {
     // Pass error.message in the response
     return new Response(
       JSON.stringify({ error: 'User deletion failed', message: error.message }),
@@ -75,7 +75,7 @@ export async function GET(request: NextRequest) {
         'Content-Type': 'application/json',
       },
     });
-  } catch (error) {
+  } catch (error: any) {
     return new Response(
       JSON.stringify({
         error: 'Error fetching user data',

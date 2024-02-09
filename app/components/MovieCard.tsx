@@ -13,6 +13,7 @@ interface iAppProps {
   score: number;
   mediaType: string;
   imagePath: string;
+  updateWatchlist?: (movieId: number) => void;
 }
 
 export function MovieCard({
@@ -23,6 +24,7 @@ export function MovieCard({
   mediaType,
   score,
   imagePath,
+  updateWatchlist,
 }: iAppProps) {
   const [open, setOpen] = useState(false);
   const [videoUrl, setVideoUrl] = useState('');
@@ -73,6 +75,7 @@ export function MovieCard({
         imagePath={imagePath}
         watchList={watchList}
         setWatchList={setWatchList}
+        updateWatchlist={updateWatchlist}
       />
     </>
   );

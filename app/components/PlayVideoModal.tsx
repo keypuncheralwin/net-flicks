@@ -26,6 +26,7 @@ interface iAppProps {
   youtubeString: string;
   watchList: boolean;
   setWatchList: (value: boolean) => void;
+  updateWatchlist?: (movieId: number) => void;
 }
 
 export default function PlayVideoModal({
@@ -41,6 +42,7 @@ export default function PlayVideoModal({
   voteAverage,
   watchList,
   setWatchList,
+  updateWatchlist,
 }: iAppProps) {
   const pathName = usePathname();
   const [playing, setPlaying] = useState(true);
@@ -73,6 +75,9 @@ export default function PlayVideoModal({
     const remove = await removeFromWatchlist(movieId, pathName);
     if (remove.success) {
       setWatchList(false);
+      if (updateWatchlist) {
+        updateWatchlist(movieId);
+      }
     }
   };
   return (

@@ -131,7 +131,7 @@ export async function removeFromWatchlist(
       },
     });
     if (pathName.includes('list')) {
-      revalidatePath('/home/user/list');
+      revalidatePath(pathName);
     }
     if (result.count > 0) {
       // If one or more entries are deleted
@@ -190,8 +190,6 @@ export async function existsInWatchlist(
 }
 
 export async function getWatchlistItems() {
-  'use server';
-
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.email) {
