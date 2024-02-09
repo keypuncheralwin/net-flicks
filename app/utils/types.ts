@@ -49,7 +49,7 @@ export type FeaturedMedia = {
   movieId: number;
   title: string;
   imagePath: string;
-  mediaType: string;
+  mediaType: string | null | undefined;
   date: string;
   overview: string;
   voteAverage: number;

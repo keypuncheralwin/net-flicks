@@ -20,8 +20,8 @@ export default async function HomePage() {
       <FeaturedVideo data={featuredData.featuredItem} />
       <HomeCarousel data={data.trendingNow} title={'Trending'} />
       <HomeCarousel data={data.topRated} title={'Top Rated'} />
-      <HomeCarousel data={data.comedyMovies} title={'Comedy Titles'} />
-      <HomeCarousel data={data.actionMovies} title={'Actuion Titles'} />
+      <HomeCarousel data={data.comedyMovies} title={'Comedy'} />
+      <HomeCarousel data={data.actionMovies} title={'Action'} />
     </div>
   );
 }

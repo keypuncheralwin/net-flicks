@@ -56,7 +56,7 @@ export default function FeaturedSection(props: FeaturedSectionProps) {
         youtubeString={youtubeString}
         movieId={movieId}
         voteAverage={voteAverage}
-        mediaType={mediaType}
+        mediaType={mediaType as string}
         imagePath={imagePath}
         watchList={watchList}
         setWatchList={setWatchList}

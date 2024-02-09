@@ -1,5 +1,5 @@
-const API_KEY = process.env.NEXT_PUBLIC_TMDB_API;
-const BASE_URL = 'https://api.themoviedb.org/3';
+export const API_KEY = process.env.NEXT_PUBLIC_TMDB_API;
+export const BASE_URL = 'https://api.themoviedb.org/3';
 
 export const homePageRequests = {
   trending: `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=en-US`,

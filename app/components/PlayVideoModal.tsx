@@ -12,6 +12,7 @@ import ReactPlayer from 'react-player/youtube';
 import { addToWatchlist, removeFromWatchlist } from '../utils/action';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { useToast } from '@/components/ui/use-toast';
 
 interface iAppProps {
   title: string;
@@ -47,6 +48,7 @@ export default function PlayVideoModal({
   const pathName = usePathname();
   const [playing, setPlaying] = useState(true);
   const [muted, setMuted] = useState(true);
+  const { toast } = useToast();
 
   const togglePlay = () => {
     setPlaying(!playing);
@@ -69,15 +71,35 @@ export default function PlayVideoModal({
 
     if (add.success) {
       setWatchList(true);
+      toast({
+        title: 'Added to watchlist',
+        description: title + ' is now in your watchlist',
+      });
+    } else {
+      toast({
+        title: 'Error',
+        description: 'Failed to add to watchlist',
+        variant: 'destructive',
+      });
     }
   };
   const removeFromWatchList = async () => {
     const remove = await removeFromWatchlist(movieId, pathName);
     if (remove.success) {
       setWatchList(false);
+      toast({
+        title: 'Removed from watchlist',
+        description: title + ' is no longer in your watchlist',
+      });
       if (updateWatchlist) {
         updateWatchlist(movieId);
       }
+    } else {
+      toast({
+        title: 'Error',
+        description: 'Failed to remove ' + title + ' from your watchlist',
+        variant: 'destructive',
+      });
     }
   };
   return (
@@ -116,23 +138,25 @@ export default function PlayVideoModal({
           {/* Control Buttons */}
           <div className="absolute bottom-4 left-4 flex items-center space-x-4">
             {' '}
-            {/* Adjusted positioning */}
-            {/* Play/Pause Button */}
-            <button onClick={togglePlay}>
-              {playing ? (
-                <PauseCircle className="h-7 w-7 text-gray-500 hover:text-white cursor-pointer" />
-              ) : (
-                <PlayCircle className="h-7 w-7 text-gray-500 hover:text-white cursor-pointer" />
-              )}
-            </button>
-            {/* Mute/Unmute Button */}
-            <button onClick={toggleMute}>
-              {muted ? (
-                <VolumeX className="h-7 w-7 text-gray-500 hover:text-white cursor-pointer" />
-              ) : (
-                <Volume2 className="h-7 w-7 text-gray-500 hover:text-white cursor-pointer" />
-              )}
-            </button>
+            {youtubeString && (
+              <>
+                <button onClick={togglePlay}>
+                  {playing ? (
+                    <PauseCircle className="h-7 w-7 text-gray-500 hover:text-white cursor-pointer" />
+                  ) : (
+                    <PlayCircle className="h-7 w-7 text-gray-500 hover:text-white cursor-pointer" />
+                  )}
+                </button>
+                {/* Mute/Unmute Button */}
+                <button onClick={toggleMute}>
+                  {muted ? (
+                    <VolumeX className="h-7 w-7 text-gray-500 hover:text-white cursor-pointer" />
+                  ) : (
+                    <Volume2 className="h-7 w-7 text-gray-500 hover:text-white cursor-pointer" />
+                  )}
+                </button>
+              </>
+            )}
           </div>
         </div>
 

@@ -1,3 +1,4 @@
+import { API_KEY, BASE_URL } from './apiCalls';
 import { YoutubeVideoResult } from './types';
 
 /**
@@ -30,9 +31,6 @@ export async function fetchYouTubeTrailerUrl(
   movieId: number,
   mediaType?: string
 ): Promise<string | null> {
-  const API_KEY = process.env.NEXT_PUBLIC_TMDB_API;
-  const BASE_URL = 'https://api.themoviedb.org/3';
-
   async function fetchTrailerUrl(type: string): Promise<string | null> {
     try {
       const url = `${BASE_URL}/${type}/${movieId}?api_key=${API_KEY}&language=en-US&append_to_response=videos`;

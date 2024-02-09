@@ -12,14 +12,18 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { signOut } from 'next-auth/react';
 
-export default function UserNav() {
+interface UserNavProps {
+  userName?: string | null;
+  userEmail?: string | null;
+}
+export default function UserNav(props: UserNavProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-10 w-10 rounded-sm">
           <Avatar className="h-10 w-10 rounded-sm">
             <AvatarImage src="https://fzlrnxyvpzqrzaqcvdss.supabase.co/storage/v1/object/sign/Resources/avatar.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJSZXNvdXJjZXMvYXZhdGFyLnBuZyIsImlhdCI6MTcwNzI4OTY0NCwiZXhwIjoxNzM4ODI1NjQ0fQ.q6mqxrAUqbakGLr8iml3mtLybHkKwRCWjbWBgvHfrs8&t=2024-02-07T07%3A07%3A24.281Z" />
-            <AvatarFallback className="rounded-sm">User</AvatarFallback>
+            <AvatarFallback className="rounded-sm"></AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
@@ -27,14 +31,16 @@ export default function UserNav() {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel>
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">User</p>
+            <p className="text-sm font-medium leading-none">{props.userName}</p>
             <p className="text-xs leading-none text-muted-foreground">
-              example@email.com
+              {props.userEmail}
             </p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => signOut()}>Sign out</DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer" onClick={() => signOut()}>
+          Sign out
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -29,7 +29,7 @@ export default function SeedDatabase() {
     });
 
     if (response.ok) {
-      const result = await response.json();
+      await response.json();
       toast({
         title: 'Sucess!',
         description: 'Succesfully added',
