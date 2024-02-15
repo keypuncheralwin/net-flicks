@@ -1,8 +1,8 @@
 import { getServerSession } from 'next-auth';
-import { ReactNode } from 'react';
-import { authOptions } from '../utils/auth';
 import { redirect } from 'next/navigation';
+import { ReactNode } from 'react';
 import Navbar from '../components/Navbar';
+import { authOptions } from '../utils/auth';
 
 export default async function HomeLayout({
   children,

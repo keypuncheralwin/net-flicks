@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
 import Image from 'next/image';
+import { ReactNode } from 'react';
 import BackgroundImage from '../../public/login_background.jpg';
 import Logo from '../../public/netflicks_logo.png';
 

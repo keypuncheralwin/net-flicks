@@ -1,9 +1,9 @@
 'use client';
-import PlayVideoModal from './PlayVideoModal';
 import { useState } from 'react';
-import ScoreCircle from './ScoreCircle';
 import { existsInWatchlist } from '../utils/action';
 import { fetchYouTubeTrailerUrl } from '../utils/helpers';
+import PlayVideoModal from './PlayVideoModal';
+import ScoreCircle from './ScoreCircle';
 
 interface iAppProps {
   title: string;

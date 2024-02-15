@@ -1,5 +1,4 @@
 import { API_KEY, BASE_URL } from './apiCalls';
-import { YoutubeVideoResult } from './types';
 
 /**
  * Validates an email address using a regular expression.

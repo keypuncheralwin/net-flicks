@@ -1,9 +1,9 @@
 'use client';
-import React, { useRef, useState } from 'react';
-import Image from 'next/image';
-import { MovieCard } from './MovieCard';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import Image from 'next/image';
+import { useRef, useState } from 'react';
 import { Movie } from '../utils/types';
+import { MovieCard } from './MovieCard';
 
 type HomeCarouselProps = {
   data: Movie[];

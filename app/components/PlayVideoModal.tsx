@@ -1,4 +1,5 @@
 import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { useToast } from '@/components/ui/use-toast';
 import {
   CheckCircle2,
   PauseCircle,
@@ -7,12 +8,11 @@ import {
   Volume2,
   VolumeX,
 } from 'lucide-react';
-import React, { useState } from 'react';
-import ReactPlayer from 'react-player/youtube';
-import { addToWatchlist, removeFromWatchlist } from '../utils/action';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useToast } from '@/components/ui/use-toast';
+import { useState } from 'react';
+import ReactPlayer from 'react-player/youtube';
+import { addToWatchlist, removeFromWatchlist } from '../utils/action';
 
 interface iAppProps {
   title: string;

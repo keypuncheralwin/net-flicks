@@ -1,8 +1,8 @@
 // pages/api/watchlist.js
-import { NextRequest } from 'next/server';
+import { authOptions } from '@/app/utils/auth';
 import prisma from '@/app/utils/db';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/utils/auth';
+import { NextRequest } from 'next/server';
 
 export async function GET(request: NextRequest) {
   const session = await getServerSession(authOptions);

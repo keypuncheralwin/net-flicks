@@ -1,8 +1,8 @@
 'use client';
-import React, { useEffect, useState } from 'react';
 import { MovieCard } from '@/app/components/MovieCard';
-import Image from 'next/image';
 import { AddToWatchlistParams } from '@/app/utils/types';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export default function Watchlist() {
   const [data, setData] = useState([]);

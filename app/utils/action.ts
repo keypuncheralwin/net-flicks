@@ -1,11 +1,11 @@
 'use server';
 
-import prisma from './db';
 import { getServerSession } from 'next-auth';
-import { authOptions } from './auth';
-import { homePageRequests, tvRequests, movieRequests } from './apiCalls';
-import { AddToWatchlistParams } from './types';
 import { revalidatePath } from 'next/cache';
+import { homePageRequests, movieRequests, tvRequests } from './apiCalls';
+import { authOptions } from './auth';
+import prisma from './db';
+import { AddToWatchlistParams } from './types';
 
 export async function addNewUser(name: string, email: string) {
   'use server';

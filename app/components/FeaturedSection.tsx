@@ -1,18 +1,21 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { InfoIcon, PlayCircle } from 'lucide-react';
+import { PlayCircle } from 'lucide-react';
 import { useState } from 'react';
+import { existsInWatchlist } from '../utils/action';
+import { FeaturedMedia } from '../utils/types';
 import PlayVideoModal from './PlayVideoModal';
 import ScoreCircle from './ScoreCircle';
-import { FeaturedMedia } from '../utils/types';
-import { existsInWatchlist } from '../utils/action';
 
 interface FeaturedSectionProps {
   data: FeaturedMedia | null;
 }
 
 export default function FeaturedSection(props: FeaturedSectionProps) {
+  const [open, setOpen] = useState(false);
+  const [watchList, setWatchList] = useState(false);
+
   if (!props.data) {
     return null;
   }
@@ -26,8 +29,6 @@ export default function FeaturedSection(props: FeaturedSectionProps) {
     voteAverage,
     mediaType,
   } = props.data;
-  const [open, setOpen] = useState(false);
-  const [watchList, setWatchList] = useState(false);
 
   const handleClick = async () => {
     const watchList = await existsInWatchlist(movieId);
@@ -38,6 +39,7 @@ export default function FeaturedSection(props: FeaturedSectionProps) {
     }
     setWatchList(false);
   };
+
   return (
     <>
       <Button onClick={handleClick} className="text-lg font-medium">

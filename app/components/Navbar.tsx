@@ -1,12 +1,12 @@
 'use client';
 
+import { Bell, ChevronDown, Search } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Logo from '../../public/netflicks_logo.png';
-import { Bell, ChevronDown, Search } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import UserNav from './UserNav';
 import { useEffect, useState } from 'react';
+import Logo from '../../public/netflicks_logo.png';
+import UserNav from './UserNav';
 
 interface linkProps {
   name: string;

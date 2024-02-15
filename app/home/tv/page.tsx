@@ -8,7 +8,9 @@ export default async function TvPage() {
   const data = await getAllTv();
   return (
     <div className="px-2 md:px-0">
-      <h1 className="text-3xl font-bold pt-10 -mb-[50px]">What's on TV?</h1>
+      <h1 className="text-3xl font-bold pt-10 -mb-[50px]">
+        Ready to channel surf?
+      </h1>
       <HomeCarousel data={data.trendingTv} title={'Trending'} />
       <HomeCarousel data={data.comedyTv} title={'Comedy'} />
       <HomeCarousel data={data.dramaTv} title={'Drama'} />

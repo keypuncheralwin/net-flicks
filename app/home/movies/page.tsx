@@ -1,5 +1,3 @@
-import React from 'react';
-
 import HomeCarousel from '@/app/components/HomeCarousel';
 import { getAllMovies } from '@/app/utils/action';
 

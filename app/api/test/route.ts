@@ -1,7 +1,7 @@
 // For testing purposees only
 
-import { NextRequest } from 'next/server';
 import prisma from '@/app/utils/db';
+import { NextRequest } from 'next/server';
 
 export async function DELETE(request: NextRequest) {
   const email = request.nextUrl.searchParams.get('email');

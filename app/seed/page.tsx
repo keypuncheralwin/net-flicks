@@ -1,8 +1,8 @@
 'use client';
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { RotateCw } from 'lucide-react';
+import { useState } from 'react';
 
 export default function SeedDatabase() {
   const [movieId, setMovieId] = useState('');

@@ -1,14 +1,14 @@
 'use client';
-import React, { useState } from 'react';
-import { signIn } from 'next-auth/react';
-import { addNewUser, checkUserExists } from '../utils/action';
-import { isNotEmpty, isValidEmail } from '../utils/helpers';
-import { useToast } from '@/components/ui/use-toast';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ToastActionElement } from '@/components/ui/toast';
+import { useToast } from '@/components/ui/use-toast';
 import { RotateCw } from 'lucide-react';
+import { signIn } from 'next-auth/react';
+import Link from 'next/link';
+import React, { useState } from 'react';
+import { addNewUser, checkUserExists } from '../utils/action';
+import { isNotEmpty, isValidEmail } from '../utils/helpers';
 
 type AuthFormProps = {
   authType: 'login' | 'sign-up';

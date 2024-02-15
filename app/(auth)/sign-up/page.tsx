@@ -1,14 +1,9 @@
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import GooogleIcon from '../../../public/google.svg';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/utils/auth';
-import { redirect } from 'next/navigation';
 import AuthForm from '@/app/components/AuthForm';
 import GoogleSignInButton from '@/app/components/GoogleSignInButton';
+import { authOptions } from '@/app/utils/auth';
+import { getServerSession } from 'next-auth';
+import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 export default async function SignUp() {
   const session = await getServerSession(authOptions);

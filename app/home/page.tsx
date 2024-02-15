@@ -1,10 +1,9 @@
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
-import React from 'react';
-import { authOptions } from '../utils/auth';
 import FeaturedVideo from '../components/FeaturedVideo';
 import HomeCarousel from '../components/HomeCarousel';
 import { getAllMedia, getFeaturedMedia } from '../utils/action';
+import { authOptions } from '../utils/auth';
 import { HomePageData } from '../utils/types';
 
 export default async function HomePage() {

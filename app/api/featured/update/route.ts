@@ -1,9 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server';
-import ytdl from 'ytdl-core';
-import { UploadApiResponse, v2 as cloudinary } from 'cloudinary';
-import { Movie } from '@/app/utils/types';
+import { authOptions } from '@/app/utils/auth';
 import prisma from '@/app/utils/db';
 import { fetchYouTubeTrailerUrl } from '@/app/utils/helpers';
+import { Movie } from '@/app/utils/types';
+import { UploadApiResponse, v2 as cloudinary } from 'cloudinary';
+import { getServerSession } from 'next-auth';
+import { NextRequest } from 'next/server';
+import ytdl from 'ytdl-core';
 
 // Cloudinary configuration
 cloudinary.config({
@@ -16,6 +18,18 @@ const API_KEY = process.env.NEXT_PUBLIC_TMDB_API;
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 export async function POST(request: NextRequest) {
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user?.email) {
+    console.error('No session or user email found');
+    return new Response('Authentication required', { status: 401 });
+  }
+
+  if (session.user.email !== 'alwingeorge11@gmail.com') {
+    console.error('Not an authorised user');
+    return new Response('Not an authorised user', { status: 401 });
+  }
+
   // Extract movieId from the request
   const movieId = request.nextUrl.searchParams.get('movieId');
   const mediaType = request.nextUrl.searchParams.get('mediaType');
