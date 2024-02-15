@@ -44,9 +44,9 @@ export default function Watchlist() {
   }
 
   return (
-    <div className="px-2 md:px-0">
+    <div className="px-2 sm:px-0">
       <h1 className="text-3xl font-bold pt-10 mb-10">My WatchList</h1>
-      <div className="md:flex md:flex-wrap gap-4 mt-5 grid grid-cols-2">
+      <div className="md:flex md:flex-wrap sm:gap-4 mt-5 grid grid-cols-2">
         {data.map((movie: AddToWatchlistParams) => (
           <div
             key={movie.movieId}
