@@ -12,5 +12,3 @@ Take a peek at Netflicks through these screenshots
   ![Login Screen](https://fzlrnxyvpzqrzaqcvdss.supabase.co/storage/v1/object/sign/Resources/loginScreen.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJSZXNvdXJjZXMvbG9naW5TY3JlZW4ucG5nIiwiaWF0IjoxNzA4MDgxNDAwLCJleHAiOjE3Mzk2MTc0MDB9.3g9EgMG_FPakrWwV4W4i7Cp1mgFnL67fco57ApTxXeQ&t=2024-02-16T11%3A03%3A20.762Z)
 - Home Page
   ![Home Page](https://fzlrnxyvpzqrzaqcvdss.supabase.co/storage/v1/object/sign/Resources/HomeScreen.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJSZXNvdXJjZXMvSG9tZVNjcmVlbi5wbmciLCJpYXQiOjE3MDgwODE0MjksImV4cCI6MTczOTYxNzQyOX0.pfSGpDIg1EcDC5oxu1V07CrBs-zBujfcHUfSetpBnYE&t=2024-02-16T11%3A03%3A49.987Z)
-- Home Page Mobile View
-  ![Home Page Mobile View](https://fzlrnxyvpzqrzaqcvdss.supabase.co/storage/v1/object/sign/Resources/HomeScreenMobile.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJSZXNvdXJjZXMvSG9tZVNjcmVlbk1vYmlsZS5wbmciLCJpYXQiOjE3MDgwODE0NzYsImV4cCI6MTczOTYxNzQ3Nn0.HF65LgoDi4JC9cdpXUZTTrulhARlFXdLzMUqLJemnsA&t=2024-02-16T11%3A04%3A36.684Z)
