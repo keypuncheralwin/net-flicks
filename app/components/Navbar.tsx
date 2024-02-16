@@ -72,6 +72,7 @@ export default function Navbar(props: NavbarProps) {
                   className="border-b border-gray-700 last:border-b-0"
                 >
                   <Link
+                  onClick={() => setIsDropdownOpen(false)}
                     href={link.href}
                     className={`block px-4 py-2 text-sm ${pathName === link.href ? 'text-white font-semibold' : 'text-gray-300 font-normal'}`}
                   >
