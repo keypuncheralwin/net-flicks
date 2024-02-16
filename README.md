@@ -1,36 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![NetFlicks Logo](https://fzlrnxyvpzqrzaqcvdss.supabase.co/storage/v1/object/sign/Resources/netflicks_logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJSZXNvdXJjZXMvbmV0ZmxpY2tzX2xvZ28ucG5nIiwiaWF0IjoxNzA4MDgxMTY5LCJleHAiOjE3Mzk2MTcxNjl9.OBomwHOwDuR39ONhSAabdvUEpmoMmHpjHUVpqlveOLo&t=2024-02-16T10%3A59%3A29.881Z)
 
-## Getting Started
+[Visit NetFlicks](https://netflicks.alwingeorge.net)
 
-First, run the development server:
+NetFlicks is a dynamic platform for exploring, tracking, and organising your favorite movies and TV shows. Built with Next.js 14, it offers a seamless user experience with options to log in via email or Google. Not only can you discover and organize your next binge-watching adventure, but you can also watch trailers for all your favorite TV shows and movies and add them to your watchlist. Dive into NetFlicks today and elevate your viewing experience!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Screenshots
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Take a peek at Netflicks through these screenshots
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Login Screen
+  ![Login Screen](https://fzlrnxyvpzqrzaqcvdss.supabase.co/storage/v1/object/sign/Resources/loginScreen.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJSZXNvdXJjZXMvbG9naW5TY3JlZW4ucG5nIiwiaWF0IjoxNzA4MDgxNDAwLCJleHAiOjE3Mzk2MTc0MDB9.3g9EgMG_FPakrWwV4W4i7Cp1mgFnL67fco57ApTxXeQ&t=2024-02-16T11%3A03%3A20.762Z)
+- Home Page
+  ![Home Page](https://fzlrnxyvpzqrzaqcvdss.supabase.co/storage/v1/object/sign/Resources/HomeScreen.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJSZXNvdXJjZXMvSG9tZVNjcmVlbi5wbmciLCJpYXQiOjE3MDgwODE0MjksImV4cCI6MTczOTYxNzQyOX0.pfSGpDIg1EcDC5oxu1V07CrBs-zBujfcHUfSetpBnYE&t=2024-02-16T11%3A03%3A49.987Z)
+- Home Page Mobile View
+  ![Home Page Mobile View](https://fzlrnxyvpzqrzaqcvdss.supabase.co/storage/v1/object/sign/Resources/HomeScreenMobile.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJSZXNvdXJjZXMvSG9tZVNjcmVlbk1vYmlsZS5wbmciLCJpYXQiOjE3MDgwODE0NzYsImV4cCI6MTczOTYxNzQ3Nn0.HF65LgoDi4JC9cdpXUZTTrulhARlFXdLzMUqLJemnsA&t=2024-02-16T11%3A04%3A36.684Z)
