@@ -3,7 +3,7 @@ import { FeaturedMedia } from '../utils/types';
 import FeaturedSection from './FeaturedSection';
 
 type FeaturedProps = {
-  data: FeaturedMedia | undefined;
+  data: FeaturedMedia | undefined | null;
 };
 
 export default async function FeaturedVideo({ data }: FeaturedProps) {

@@ -4,15 +4,20 @@ import Image from 'next/image';
 import { useRef, useState } from 'react';
 import { Movie } from '../utils/types';
 import { MovieCard } from './MovieCard';
+import SkeletonLoader from './SkeletonLoader';
 
 type HomeCarouselProps = {
-  data: Movie[];
+  data: Movie[] | null | undefined;
   title: string;
 };
 
 export default function HomeCarousel({ data, title }: HomeCarouselProps) {
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
+
+  if (!data) {
+    return <SkeletonLoader title={title} />;
+  }
 
   const handleClick = (direction: string) => {
     setIsMoved(true);

@@ -58,6 +58,10 @@ const config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      backgroundImage: {
+        shimmer:
+          'linear-gradient(90deg, #f4f4f4 25%, #e0e0e0 50%, #f4f4f4 75%)',
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -68,8 +72,8 @@ const config = {
           to: { height: '0' },
         },
         shimmer: {
-          '0%': { transform: 'translateX(-100%)' },
-          '100%': { transform: 'translateX(100%)' },
+          '0%': { backgroundSize: '200% 100%', backgroundPosition: '-200% 0' },
+          '100%': { backgroundSize: '200% 100%', backgroundPosition: '200% 0' },
         },
         spin: {
           from: {

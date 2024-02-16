@@ -1,5 +1,6 @@
 'use client';
 import { MovieCard } from '@/app/components/MovieCard';
+import SkeletonLoader from '@/app/components/SkeletonLoader';
 import { AddToWatchlistParams } from '@/app/utils/types';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -36,7 +37,12 @@ export default function Watchlist() {
   }, []);
 
   if (loading) {
-    return <div>Loading your watchlist...</div>;
+    return (
+      <>
+        <SkeletonLoader title="Fetching WatchList" />
+        <SkeletonLoader />
+      </>
+    );
   }
 
   if (data.length === 0) {
