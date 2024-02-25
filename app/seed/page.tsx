@@ -14,36 +14,52 @@ export default function SeedDatabase() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setIsLoading(true);
-
+  
     // Construct the URL with parameters
     const url = new URL('/api/featured/update', window.location.origin);
     url.searchParams.append('movieId', movieId);
     url.searchParams.append('mediaType', mediaType);
-
-    // Make a POST request to your API route with URL parameters
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    if (response.ok) {
-      await response.json();
-      toast({
-        title: 'Sucess!',
-        description: 'Succesfully added',
+  
+    try {
+      
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
-      setIsLoading(false);
-    } else {
-      console.error('Failed to update the database');
+  
+      
+      if (response.ok) {
+        await response.json();
+        toast({
+          title: 'Success!',
+          description: 'Successfully added',
+        });
+      } else {
+        
+        const errorResponse = await response.json(); 
+        console.error('Failed to update the database', errorResponse);
+        toast({
+          title: 'Error',
+          description: errorResponse.message || 'Failed to update the database', 
+          variant: 'destructive',
+        });
+      }
+    } catch (error) {
+      
+      console.error('Fetch error:', error);
       toast({
         title: 'Error',
-        description: 'Failed to update the database',
+        description: 'An unexpected error occurred',
         variant: 'destructive',
       });
+    } finally {
+      
+      setIsLoading(false);
     }
   };
+  
 
   return (
     // Center the form on the page with Flexbox
