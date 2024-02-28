@@ -31,9 +31,8 @@ export function MovieCard({
   const [watchList, setWatchList] = useState(false);
 
   const handleClick = async () => {
-    const watchList = await existsInWatchlist(movieId);
     setOpen(true);
-    console.log(imagePath);
+    const watchList = await existsInWatchlist(movieId);
     if (watchList.exists) {
       setVideoUrl(watchList.youtubeString as string);
       setWatchList(true);
